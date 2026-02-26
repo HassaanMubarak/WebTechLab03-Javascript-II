@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mastering Promises</h1>
+    <script>
+       const downloadImage = new Promise((resolve, reject) => {
+        const isSuccess = true;
+        setTimeout(() => {
+            if(isSuccess){
+                resolve({url:"www.downloadImage.com"});
+            } else {
+                reject("Failed to Download");
+            }
+        }, 2000);
+       });
+
+       downloadImage
+       .then((data) => {
+        console.log("Download URL: ", data.url);
+       })
+       .catch((error) => {
+        console.log("Error: ", error);
+       });
+    </script>
+</body>
+</html>
