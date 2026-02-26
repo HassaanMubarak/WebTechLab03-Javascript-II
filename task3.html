@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Promise Concepts - Promise Chaining</title>
+</head>
+<body>
+    <h2>Promise Chaining</h2>
+    <script>
+        const products = [
+            { prodID: 1, prod: "Earphones" },
+            { prodID: 2, prod: "Mobile" },
+            { prodID: 3, prod: "Laptop" },
+            { prodID: 4, prod: "Computer" },
+            { prodID: 5, prod: "Headphones" },
+        ];
+        const getList = () => {
+            return new Promise(resolve => {
+               console.log('Returning List of Products.');
+               resolve(products); 
+            });
+        };
+        const getProduct = (prod) => {
+            return new Promise(resolve => {
+               resolve(prod[0].prod); 
+            });
+        };
+        
+        getList()
+        .then(list => {
+            //Getting the List
+            return getProduct(list);
+        })
+        .then(prods => {
+            console.log(`Product: ${prods}`);
+        })
+        .catch(error=>{
+            console.log("Error: ",error);
+        })
+    </script>
+</body>
+</html>

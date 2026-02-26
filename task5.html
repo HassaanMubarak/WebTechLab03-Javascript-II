@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Promise API</title>
+</head>
+<body>
+    <h1>Promise API</h1>
+    <p>Promise.all, Promise.race</p>
+    <script>
+        const promise1 = new Promise(resolve => setTimeout(() => resolve('I Execute in 1 Second'), 1000));
+        const promise3 = new Promise(resolve => setTimeout(() => resolve('I Execute in 3 Second'), 3000));
+        Promise.race([promise1, promise3])
+        .then(fastest => {
+            console.log('Fastest: ', fastest);
+        })
+        .catch(error => {
+            console.log("Error Occured at: ", error);
+        });
+    </script>
+</body>
+</html>

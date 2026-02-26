@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Error Handling</title>
+</head>
+<body>
+    <h2>Promise Error Handling</h2>
+    <script>
+        const login = () => {
+            return new Promise((resolve, reject) => {
+                const loginError = true; //Simulating Error
+                
+                setTimeout(() => {
+                    if(!loginError){
+                        console.log("Step 1: Ahmed Logged in.");
+                        resolve({userId: 123});
+                    } else {
+                        reject("Login Error! Try Again");
+                    }
+                }, 1000);
+            });
+        };
+
+        const getProfile = (userID) => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log(`Step 2: Fetching Profile for User ID ${userID}`);
+                    resolve({name: "Ahmed", status: "Active"});
+                }, 1000);
+            });
+        };
+
+        login()
+        .then(user => {
+            return getProfile(user.userID);
+        })
+        .then(profile => {
+            console.log("Step 3: Profile Details Received:", profile);
+        })
+        .catch(error => {
+            console.log("An Error occured during the process: ", error);
+        })
+    </script>
+</body>
+</html>
