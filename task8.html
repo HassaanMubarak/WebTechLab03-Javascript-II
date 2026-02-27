@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blob and File API</title>
+</head>
+<body>
+    <h2>Blob and File API</h2>
+    <input type="file" id="fileInp">
+    <script>
+        const fileInp = document.getElementById("fileInp");
+        fileInp.addEventListener("change", function(){
+            const file = this.files[0];
+            const reader = new FileReader();
+            reader.onload = function() {
+                console.log("File Content: ", reader.result);
+            };
+            reader.readAsText(file);
+        })
+    </script>
+</body>
+</html>
