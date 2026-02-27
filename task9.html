@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LocalStorage & SessionStorage</title>
+</head>
+<body>
+    <h2>SessionStorage Counter</h2>
+    <p id="counter"></p>
+    <script>
+        let count = sessionStorage.getItem("reloadCount");
+        if (count === null) {
+            count = 0;
+        } else {
+            count = parseInt(count);
+        }
+        count++;
+        sessionStorage.setItem("reloadCount", count);
+        document.getElementById("counter").textContent = count;
+    </script>
+</body>
+</html>

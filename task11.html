@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ArrayBuffer</title>
+</head>
+<body>
+    <h2>Array Buffer</h2>
+    <script>
+        const buffer = new ArrayBuffer(16);
+        const uint8 = new Uint8Array(buffer);
+        for (let i = 0; i < uint8.length; i++) {
+            uint8[i] = i * 10;
+        }
+        console.log("Uint8Array contents: ", uint8);
+        const decoder = new TextDecoder();
+        const decodedText = decoder.decode(buffer);
+        console.log("Decoded text:", decodedText);
+    </script>
+</body>
+</html>

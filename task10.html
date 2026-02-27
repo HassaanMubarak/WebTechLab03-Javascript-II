@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Send Example</title>
+</head>
+<body>
+    <h2>WebSocket Client</h2>
+    <input type="text" id="messageInput" placeholder="Enter message">
+    <button id="sendBtn">Send</button>
+    <script>
+        const socket = new WebSocket("https://echo.websocket.org/");
+        socket.onopen = function () {
+            console.log("Hello From Hassaan");
+        }
+        document.getElementById("sendBtn").addEventListener("click", function () {
+            const message = document.getElementById("messageInput").value;
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send(message);
+                console.log("Sent:", message);
+            } else {
+                console.log("WebSocket is not connected.");
+            }
+        });
+    </script>
+</body>
+</html>
