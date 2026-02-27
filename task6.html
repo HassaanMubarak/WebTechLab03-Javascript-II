@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promisification</title>
+</head>
+<body>
+    <h2>Promisification</h2>
+    <script>
+        //Legacy Callback Func
+        const checkStatus = (callback) => {
+            console.log(`Checking Status`);
+            setTimeout(() => {
+                callback(null, `Status OK`);
+            }, 2000);
+        };
+        // Promisify the function
+        const checkStatusPromise = () => {
+            return new Promise((resolve, reject) => {
+                checkStatus((error, result) => {
+                    if(error){
+                        return reject(error);
+                    }else{
+                        resolve(result);
+                    }
+                });
+            });
+        };
+        //Using the new Promise based func
+        checkStatusPromise("report.txt", "Status 200")
+        .then(message => console.log(message))
+        .catch(error => console.error("Error saving file: ", error));
+    </script>
+</body>
+</html>
